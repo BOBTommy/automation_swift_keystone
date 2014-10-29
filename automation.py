@@ -44,6 +44,17 @@ user = keystone.users.create(name = user_name,
                              password = user_pass,
                              tenant_id = tenant_id)
 
+# grant user_id
+
+# get member role in role list
+for token in keystone.roles.list():
+    if token.name == 'member':
+        member_role = token
+
+keystone.roles.add_user_role(user = user,
+                             role = member_role,
+                             tenant = tenant)
+
 # Second big step is Swift auth part
 # This is for docker-registry, so, using user created by keystone service, we will create a container
 

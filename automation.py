@@ -31,7 +31,9 @@ user_pass = raw_input('Insert team pass : ')
 
 tenant_name = raw_input('Insert tenant name : ')
 # this will be replaced using django app.
-# name will be formatted with team_name + / + tenant_name
+# name will be formatted with team_name + __ + tenant_name
+
+tenant_name = user_name + "__" + tenant_name
 
 tenant = keystone.tenants.create(tenant_name=tenant_name, description=tenant_name + "team name is buildbuild", enabled=True)
 
@@ -47,6 +49,8 @@ user = keystone.users.create(name = user_name,
 # grant user_id
 
 # get member role in role list
+member_role = None
+
 for token in keystone.roles.list():
     if token.name == 'member':
         member_role = token

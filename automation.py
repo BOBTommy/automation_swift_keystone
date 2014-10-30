@@ -76,3 +76,10 @@ swift_conn = swift_client.Connection(authurl=swift_auth_url,
                                      key=user_pass,
                                      tenant_name=tenant_name,
                                      auth_version=2)
+
+
+# If successfully, connected, we will listing containers in this account, for test.
+account_info = swift_conn.get_account()
+containers = account_info[1]
+for container in containers:
+    print(container['name'])

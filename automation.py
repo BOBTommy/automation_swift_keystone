@@ -13,6 +13,12 @@ from swiftclient import client as swift_client
 # one for docker-registry images, and the other for archiving user docker images file.
 # We will use bypassing method with os_auth_url(auth_url), os_service_token(token), os_service_endpoint(endpoint)
 
+# And Keystone endpoint is shown as bellow
+# public_url : http://localhost:5000/v2.0
+# internal_url : http://localhost:5000/v2.0
+# admin_url : http://localhost:35357/v2.0
+
+
 keystone = client.Client(auth_url='http://localhost:5000/v2.0',
                          token='0120b90111df48feb5c727081afb859f',
                          endpoint='http://localhost:35357/v2.0')

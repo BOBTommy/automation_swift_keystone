@@ -85,7 +85,10 @@ swift_conn = swift_client.Connection(authurl=swift_auth_url,
 
 
 # If successfully, connected, we will listing containers in this account, for test.
+# Structure is 0 index is information that equals to "swift stat"
+# index 1 is containers which owned by this user.
 account_info = swift_conn.get_account()
 containers = account_info[1]
 for container in containers:
     print(container['name'])
+# In this status, container will be empty

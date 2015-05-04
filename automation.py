@@ -60,6 +60,7 @@ user = keystone.users.create(name = user_name,
 # get member role in role list
 member_role = None
 
+
 for token in keystone.roles.list():
     if token.name == 'member':
         member_role = token
